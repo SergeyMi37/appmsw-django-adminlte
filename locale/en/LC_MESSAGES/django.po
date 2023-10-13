@@ -1,0 +1,155 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-12 14:44+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\appmsw\forms.py:14
+msgid "name-param"
+msgstr ""
+
+#: .\appmsw\forms.py:15
+msgid "code-param"
+msgstr ""
+
+#: .\appmsw\forms.py:38
+msgid "Passwords do not match or are empty"
+msgstr ""
+
+#: .\home\templates\includes\navigation-light.html:11
+#: .\home\templates\registration\logged_out.html:19
+msgid "Home"
+msgstr ""
+
+#: .\home\templates\includes\navigation-light.html:16
+#: .\home\templates\includes\navigation-light.html:23
+msgid "Change Password"
+msgstr ""
+
+#: .\home\templates\includes\navigation-light.html:19
+#: .\home\templates\includes\navigation-light.html:26
+#: .\home\templates\includes\navigation-light.html:149
+msgid "Logout"
+msgstr ""
+
+#: .\home\templates\includes\navigation-light.html:31
+msgid "Sign In"
+msgstr ""
+
+#: .\home\templates\includes\navigation-light.html:46
+#: .\home\templates\includes\sidebar.html:34
+msgid "Search"
+msgstr ""
+
+#: .\home\templates\includes\navigation-light.html:154
+#: .\home\templates\includes\sidebar.html:26
+msgid "Login"
+msgstr ""
+
+#: .\home\templates\includes\navigation-light.html:171
+msgid "Change"
+msgstr ""
+
+#: .\home\templates\includes\sidebar.html:21
+msgid "Admin panel"
+msgstr ""
+
+#: .\home\templates\includes\sidebar.html:23
+msgid "password_change"
+msgstr ""
+
+#: .\home\templates\pages\index.html:64
+msgid "Custom title"
+msgstr ""
+
+#: .\home\templates\pages\index.html:69 .\home\templates\pages\index.html:84
+#: .\home\templates\pages\index.html:99 .\home\templates\pages\index.html:114
+msgid "More info"
+msgstr ""
+
+#: .\home\templates\pages\index.html:79
+msgid "Custom Icon"
+msgstr ""
+
+#: .\home\templates\pages\index.html:94
+msgid "Custom footer"
+msgstr ""
+
+#: .\home\templates\pages\index.html:195
+msgid "Select items from the side menu"
+msgstr ""
+
+#: .\home\templates\pages\index.html:197 .\home\templates\pages\index.html:247
+#: .\home\templates\pages\index.html:289 .\home\templates\pages\index.html:330
+#: .\home\templates\pages\index.html:372
+msgid "Sign IN"
+msgstr ""
+
+#: .\home\templates\pages\index.html:197 .\home\templates\pages\index.html:248
+#: .\home\templates\pages\index.html:289 .\home\templates\pages\index.html:330
+#: .\home\templates\pages\index.html:372
+msgid "Sign UP"
+msgstr ""
+
+#: .\home\templates\registration\logged_out.html:14
+msgid "Log in"
+msgstr ""
+
+#: .\home\templates\registration\logged_out.html:15
+#: .\home\templates\registration\logged_out.html:34
+msgid "Thanks for spending some quality time with the Web site today."
+msgstr ""
+
+#: .\home\templates\registration\logged_out.html:20
+msgid "Log in again"
+msgstr ""
+
+#: .\home\templates\registration\password_change_done.html:16
+msgid "Documentation"
+msgstr ""
+
+#: .\home\templates\registration\password_change_done.html:19
+msgid "Change password"
+msgstr ""
+
+#: .\home\templates\registration\password_change_done.html:20
+msgid "Log out"
+msgstr ""
+
+#: .\home\templates\registration\password_change_done.html:37
+#: .\home\templates\registration\password_change_form.html:26
+msgid "Password change"
+msgstr ""
+
+#: .\home\templates\registration\password_change_done.html:51
+#: .\home\templates\registration\password_change_done.html:65
+msgid "Your password was changed."
+msgstr "Dein Passwort wurde geändert."
+
+#: .\home\templates\registration\password_change_form.html:41
+msgid ""
+"Please enter your old password, for security's sake, and then enter your new "
+"password twice so we can verify you typed it in correctly."
+msgstr ""
+
+#: .\home\templates\registration\password_change_form.html:72
+msgid "Change my password"
+msgstr ""
+
+#: .\home\templates\registration\password_change_form.html:86
+msgid "Please correct the errors below."
+msgstr ""

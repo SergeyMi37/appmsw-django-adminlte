@@ -4,7 +4,7 @@
     <Module>
       <Name>apptools-django</Name>
       <Version>1.2.5</Version>
-      <Description>Application tools for technical support and DBMS administrator use Django AdminLte</Description>
+      <Description>Application tools for use Django AdminLte</Description>
       <Packaging>module</Packaging>
   <Keywords>Application tools AdminLTE </Keywords>
 <Author>
@@ -13,9 +13,9 @@
 <License>MIT</License>
 <Notes>
 repository:
-https://github.com/SergeyMi37/django-adminlte
+https://github.com/SergeyMi37/appmsw-django-adminlte.git
 description:
-Application tools for technical support and DBMS administrator use Django AdminLTE
+Application tools for use Django AdminLTE
 </Notes>
 </Author>
 	<SourcesRoot>src</SourcesRoot>

@@ -1,11 +1,34 @@
+[![Repo-GitHub](https://img.shields.io/badge/dynamic/xml?color=gold&label=GitHub%20module.xml&prefix=ver.&query=%2F%2FVersion&url=https%3A%2F%2Fraw.githubusercontent.com%2Fsergeymi37%2Fappmsw-django-adminlte%2Fmaster%2Fmodule.xml)](https://raw.githubusercontent.com/sergeymi37/appmsw-django-adminlte/master/module.xml)
+[![OEX-zapm](https://img.shields.io/badge/dynamic/json?url=https:%2F%2Fpm.community.intersystems.com%2Fpackages%2Fappmsw-django-adminlte%2F&label=ZPM-pm.community.intersystems.com&query=$.version&color=green&prefix=appmsw-django-adminlte)](https://pm.community.intersystems.com/packages/appmsw-django-adminlte)
+
+[![Docker-ports](https://img.shields.io/badge/dynamic/yaml?color=blue&label=docker-compose&prefix=ports%20-%20&query=%24.services.iris.ports&url=https%3A%2F%2Fraw.githubusercontent.com%2Fsergeymi37%2Fappmsw-django-adminlte%2Fmaster%2Fdocker-compose.yml)](https://raw.githubusercontent.com/sergeymi37/appmsw-django-adminlte/master/docker-compose.yml)
+
+## appmsw-django-adminlte
+
+![](https://raw.githubusercontent.com/SergeyMi37/appmsw-django-adminlte/master/doc/Screenshot_dj-6.png)
+
+Apptools-admin includes support for the Django platform for implementing the functions of the IRIS management portal.
+
+[![OEX](https://img.shields.io/badge/Available%20on-Intersystems%20Open%20Exchange-00b2a9.svg)](https://openexchange.intersystems.com/package/appmsw-django-adminlte) 
+[![Demo](https://img.shields.io/badge/Demo%20on-Cloud%20Run%20Deploy-F4A460)](https://appmsw-django-adminlte.demo.community.intersystems.com/apptoolsrest/a/info)
+
+<img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/SergeyMi37/appmsw-django-adminlte">
+
+[![license](https://img.shields.io/badge/License-Apache%202.0-yellow.svg)](https://raw.githubusercontent.com/sergeymi37/appmsw-django-adminlte/master/LICENSE)
+
+## What's new
+
+...
+
+![](https://raw.githubusercontent.com/SergeyMi37/appmsw-django-adminlte/master/doc/icons/logo-apptools.png)
 
 ## Manual Build 
 
 > 👉 Download the code  
 
 ```bash
-$ git clone https://github.com/app-generator/django-adminlte.git
-$ cd django-adminlte
+$ git clone https://github.com/SergeyMi37/appmsw-django-adminlte.git
+$ cd appmsw-django-adminlte
 ```
 
 <br />

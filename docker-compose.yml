@@ -1,14 +1,27 @@
 version: '3.8'
 services:
-  appseed-app:
-    container_name: appseed_app
+  iris:
+    build:
+      context: .
+      dockerfile: IrisDockerfile
+    restart: always
+    command: --check-caps false --ISCAgent false
+    ports:
+      - 51553:1972
+      - 52553:52773
+      - 53773
+    volumes:
+    # - ~/iris.key:/usr/irissys/mgr/iris.key
+      - ./:/irisdev/app
+  appmsw:
+    container_name: appmsw
     restart: always
     build: .
     networks:
       - db_network
       - web_network
-  nginx:
-    container_name: nginx
+  nginxs:
+    container_name: nginxs
     restart: always
     image: "nginx:latest"
     ports:
@@ -18,7 +31,7 @@ services:
     networks:
       - web_network
     depends_on: 
-      - appseed-app
+      - appmsw
 networks:
   db_network:
     driver: bridge

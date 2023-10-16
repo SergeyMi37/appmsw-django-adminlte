@@ -2,7 +2,7 @@
 <Export generator="Cache" version="25">
   <Document name="appmsw-django-adminlte.ZPM">
     <Module>
-      <Name>apptools-django</Name>
+      <Name>appmsw-django-adminlte</Name>
       <Version>1.2.5</Version>
       <Description>Application tools for use Django AdminLte</Description>
       <Packaging>module</Packaging>

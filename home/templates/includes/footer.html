@@ -6,7 +6,7 @@
   <!--{% appmsw_tags_get_env "param" "IRIS" "json" "APPMSW_LOGO_TITLE" %}-->
    
   {% autoescape off %}
-   {% appmsw_tags_get_env "iris_footer" %}
+   {% appmsw_tags_get_env "iris_footer" request.build_absolute_uri %}
   {% endautoescape %}
    
    <div class="float-right d-none d-sm-inline-block">

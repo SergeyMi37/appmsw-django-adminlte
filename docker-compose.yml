@@ -7,12 +7,16 @@ services:
     restart: always
     command: --check-caps false --ISCAgent false
     ports:
-      - 51553:1972
-      - 52553:52773
+      - 51773:1972
+      - 52773:52773
       - 53773
     volumes:
     # - ~/iris.key:/usr/irissys/mgr/iris.key
       - ./:/irisdev/app
+    networks:
+      - iris_network
+      - db_network
+      - web_network
   appmsw:
     container_name: appmsw
     restart: always
@@ -20,6 +24,7 @@ services:
     networks:
       - db_network
       - web_network
+      - iris_network
   nginxs:
     container_name: nginxs
     restart: always
@@ -36,5 +41,7 @@ networks:
   db_network:
     driver: bridge
   web_network:
+    driver: bridge
+  iris_network:
     driver: bridge
  

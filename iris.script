@@ -2,10 +2,10 @@
 
 zn "%SYS"
 Do ##class(Security.Users).UnExpireUserPasswords("*")
-;zpm "load https://github.com/SergeyMi37/zapm.git"
+zpm "load https://github.com/SergeyMi37/zapm.git"
 
-;zapm "newdb https://github.com/SergeyMi37/DevBox.git"
-;zapm "newdb https://github.com/intersystems-community/webterminal"
+zapm "newdb https://github.com/SergeyMi37/DevBox.git"
+zapm "newdb https://github.com/intersystems-community/webterminal"
 zn "USER"
 zpm "load /opt/irisapp/ -v":1
 

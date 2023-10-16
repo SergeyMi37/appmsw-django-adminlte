@@ -82,8 +82,13 @@ def get_env_appmsw(request,name="",fieldname="",name_return="",jsonkey=""):
             if name=="iris_footer":
                 #print(_i['apps'])
                 _irf=f"<span title='Iris Instance'>{_i['instance'].split('*')[1]}</span> <span title='Iris Host'>{_i['host']}</span>"
+                _absuri=fieldname
                 for enum in _i['apps']:
-                    _irf+=f' | <a target="_blank" href="{ enum["url"] }">{ enum["name"] }</a>'
+                    _absuri=enum["url"]
+                    if _absuri[0]==":":
+                        _absuri= ':'.join(fieldname.split(':')[0:2]) + enum["url"]
+                        _absuri=_absuri.replace("/:",":")
+                    _irf+=f' | <a target="_blank" href="{ _absuri }">{ enum["name"] }</a> '
                 return _irf
             elif name=="iris_instance":
                 return _i['instance'].split("*")[1]

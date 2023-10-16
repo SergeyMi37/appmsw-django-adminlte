@@ -5,9 +5,9 @@
 
 ## appmsw-django-adminlte
 
-![](https://raw.githubusercontent.com/SergeyMi37/appmsw-django-adminlte/master/doc/Screenshot_dj-6.png)
+![](https://raw.githubusercontent.com/SergeyMi37/appmsw-django-adminlte/master/doc/icons/AdminLTELogo.png)
 
-Apptools-admin includes support for the Django platform for implementing the functions of the IRIS management portal.
+Application tools for use Django AdminLte.
 
 [![OEX](https://img.shields.io/badge/Available%20on-Intersystems%20Open%20Exchange-00b2a9.svg)](https://openexchange.intersystems.com/package/appmsw-django-adminlte) 
 [![Demo](https://img.shields.io/badge/Demo%20on-Cloud%20Run%20Deploy-F4A460)](https://appmsw-django-adminlte.demo.community.intersystems.com/apptoolsrest/a/info)

@@ -5,6 +5,7 @@ from appmsw.iris import classMethod, classMethodFooter, classMethodPortal
 from appmsw.models import Param
 from functools import lru_cache
 from django.core import serializers
+from urllib.parse import urlparse
 
 def get_sidemenu(context):
     _js={}
@@ -82,13 +83,15 @@ def get_env_appmsw(request,name="",fieldname="",name_return="",jsonkey=""):
             if name=="iris_footer":
                 #print(_i['apps'])
                 _irf=f"<span title='Iris Instance'>{_i['instance'].split('*')[1]}</span> <span title='Iris Host'>{_i['host']}</span>"
-                _absuri=fieldname
+                o = urlparse(fieldname)
+                _absuri=o.scheme + "://"+o.hostname
                 for enum in _i['apps']:
-                    _absuri=enum["url"]
-                    if _absuri[0]==":":
-                        _absuri= ':'.join(fieldname.split(':')[0:2]) + enum["url"]
-                        _absuri=_absuri.replace("/:",":")
-                    _irf+=f' | <a target="_blank" href="{ _absuri }">{ enum["name"] }</a> '
+                    _abs = enum["url"]
+                    if _abs[0]==":":
+                        #_absuri= ':'.join(fieldname.split(':')[0:2]) + enum["url"]
+                        #_absuri=_absuri.replace("/:",":")
+                        _abs = _absuri + enum["url"]
+                    _irf+=f' | <a target="_blank" href="{ _abs }">{ enum["name"] }</a> '
                 return _irf
             elif name=="iris_instance":
                 return _i['instance'].split("*")[1]

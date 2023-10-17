@@ -59,10 +59,15 @@ ClassMethod GetFooter(arg = "", js) As %String
 		set js.webport=$g(prop("WebServerPort"))
 		set js.apps = []
 		set uri=js.django.absoluteuri ;request.build_absolute_uri()
-		if js.django.irishost="iris",js.django.irisport="1972",##class(apptools.core.files).ReadFile("/irisdev/app/docker-compose.yml",.txt,1) { 	// if we are in the docker, then we will find the port   
-			set port=$p($p(txt,":52773")," ",*)
-			if port="" set port=52773
-			set uri=$p(uri,":",1,2)_":"_port
+		if js.django.irishost="iris",js.django.irisport="1972" {
+			if $d(@..#GN@("uri"),uri) {
+				}
+			elseif ##class(apptools.core.files).ReadFile("/irisdev/app/docker-compose.yml",.txt,1) { 	// if we are in the docker, then we will find the port   
+				set port=$p($p(txt,":52773")," ",*)
+				if port="" set port=52773
+				set uri=$p(uri,":",1,2)_":"_port
+				set @..#GN@("uri")=uri
+			}
 		}
 		elseif js.django.irishost'="iris" {
 			set uri="http://"_js.django.irishost_":"_prop("WebServerPort")

@@ -2,13 +2,17 @@
 
 zn "%SYS"
 Do ##class(Security.Users).UnExpireUserPasswords("*")
-zpm "load https://github.com/SergeyMi37/zapm.git"
-
-zapm "newdb https://github.com/SergeyMi37/DevBox.git"
-zapm "newdb https://github.com/intersystems-community/webterminal"
+set mode=0 ; 1-dev" ; 0-test
+if mode {
+ zpm "load https://github.com/SergeyMi37/zapm.git"
+ zapm "newdb https://github.com/SergeyMi37/DevBox.git"
+ zapm "newdb https://github.com/intersystems-community/webterminal"
+ zapm "newdb https://github.com/rcemper/oex-mapping.git" 
+ ; d ##class(oex.map).total(30) ; do $system.SQL.Shell() ;select * from oex.map order by lastupdate desc
+}
 zn "USER"
 zpm "load /opt/irisapp/ -v":1
 
 zn "%SYS"
-zpm "load https://github.com/SergeyMi37/isc-passwordless.git"
+if mode zpm "load https://github.com/SergeyMi37/isc-passwordless.git"
 halt

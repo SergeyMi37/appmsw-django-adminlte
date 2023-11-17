@@ -66,6 +66,12 @@ docker logs <container_id>
 docker stop $(docker ps -f name=sys -q) &&  docker rm $(docker ps -f name=sys -q) && docker system prune -f
 ```
 
+## iris -------------------
+iris help
+iris view
+iris view instans
+iris session instans -U%SYS '##class(%ZAPM.ext.zpm).GetOexRepo()'
+
 ## git ------------------------------------------------------------------
 ### commit and push
 ```
@@ -88,6 +94,25 @@ git config --global credential.helper store
 git config --global user.name "SergeyMi37"
 git config --global user.email "Sergey.Mikhaylenko@gmail.com"
 ```
+## Download github repos
+#!/bin/bash
+# all repos rcemper
+REPOSITORIES=$(curl -s https://github.com/orgs/rcemper/repositories?page=1 | jq -r '.[] ).clone_url')
+for REPOSITORY in $REPOSITORIES; do
+  git clone $REPOSITORY
+done
+# all my repos starred
+REPOSITORIES=$(curl -s https://api.github.com/users/SergeyMi37/starred?per_page=1000 | jq -r '.[] | select(.fork == false).clone_url')
+for REPOSITORY in $REPOSITORIES; do
+  git clone $REPOSITORY
+done
+# repos from OEX by context
+REPOSITORIES=$(curl -s https://appadmin.demo.community.intersystems.com/apptoolsrest/custom-task/user/zapmrepolist-oex-zap)
+for REPOSITORY in $REPOSITORIES; do
+  git clone $REPOSITORY
+done
+
+
 ## ---------- SQLite
   sudo apt install sqlite3
   sqlite3 db.sqlite3 'select * from auth_user'
@@ -224,3 +249,4 @@ Type "help", "copyright", "credits" or "license" for more information.
 >>> cursor.close()
 >>> con.close()               
 >>> exit()
+

@@ -1,0 +1,9 @@
+ROUTINE %appmswserver [Type=INT]
+ ;https://github.com/rcemper/native-api-command-line-extension
+x(%rcc) 
+	try {
+		return $xecute(%rcc)
+	}
+	catch %rcc {
+		return %rcc.DisplayString()
+	}

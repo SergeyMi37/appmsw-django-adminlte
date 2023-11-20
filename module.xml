@@ -3,7 +3,7 @@
   <Document name="appmsw-django-adminlte.ZPM">
     <Module>
       <Name>appmsw-django-adminlte</Name>
-      <Version>1.2.5</Version>
+      <Version>1.3.0</Version>
       <Description>Application tools for use Django AdminLte</Description>
       <Packaging>module</Packaging>
   <Keywords>Application tools AdminLTE </Keywords>
@@ -18,45 +18,12 @@ description:
 Application tools for use Django AdminLTE
 </Notes>
 </Author>
-	<SourcesRoot>src</SourcesRoot>
-	<Invokes>
-	<Invoke Class="apptools.core.Installer" Method="AddFavorites" Phase="Activate" When="After" ></Invoke>
-        </Invokes>
-	<Resource Name="apptools.core.PKG"/>
-	<Resource Name="apptools.core.INC"/>
-        <Resource Name="apptools.Chart.PKG"/>
-        <Resource Name="apptools.Form.PKG"/>
-        <Resource Name="apptools.lte.PKG"/>
-	<Resource Name="apptools.Tabs.PKG"/>
-	<Resource Name="apptools.python.PKG"/>
-        <Resource Name="apptools.Uikit.PKG"/>
-        <Resource Name="apptools.util.PKG"/>
-	<Resource Name="appcachemsg.GBL"/>
-<CSPApplication 
-            SourcePath="/src/csp"
-            DeployPath="${cspdir}/apptools"
-            Url="/apptools" 
-            ServeFiles="1"
-            CookiePath="/apptools/"
-            PasswordAuthEnabled="1"
-            AuthenticationMethods="32" 
-            MatchRoles=":%ALL"
-            Recurse="1"/>
-<CSPApplication
-            Url="/apptoolsrest"
-            CookiePath="/apptools/"
-            PasswordAuthEnabled="1"
-            AuthenticationMethods="32" 
-            MatchRoles=":%ALL"
-            DispatchClass="apptools.core.rest"
-	    Path="${cspdir}/apptools"
-	    Recurse="1"
-	    UnauthenticatedEnabled="0"
-	    Generated="true"/>  
-<AfterInstallMessage>
- You can load admins panel at:
-&#13; ${webroot}apptoolsrest/a/info
-</AfterInstallMessage>
+<SourcesRoot>src</SourcesRoot>
+<Resource Name="%appmswserver.CLS"/>
+<!--<Resource Name="%appmswserver.INT"/>
+<Invokes>
+ <Invoke Class="%ZAPM.ext.zapp" Method="init"></Invoke>
+</Invokes>-->
 </Module>
 </Document>
 </Export>

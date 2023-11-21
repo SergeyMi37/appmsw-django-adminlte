@@ -4,6 +4,8 @@ python-dotenv
 whitenoise
 django-admin-adminlte==1.0.5
 
+jaydebeapi
+
 # psycopg2-binary
 # mysqlclient
 

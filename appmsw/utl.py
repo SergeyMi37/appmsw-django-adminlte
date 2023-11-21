@@ -83,8 +83,10 @@ def get_env_appmsw(request,name="",fieldname="",name_return="",jsonkey=""):
             if name=="iris_footer":
                 #print(_i['apps'])
                 _irf=f"<span title='Iris Instance'>{_i['instance'].split('*')[1]}</span> <span title='Iris Host'>{_i['host']}</span>"
-                o = urlparse(fieldname)
-                _absuri=o.scheme + "://"+o.hostname
+                _absuri=''
+                if fieldname!='':
+                    o = urlparse(fieldname)
+                    _absuri=o.scheme + "://"+o.hostname
                 for enum in _i['apps']:
                     _abs = enum["url"]
                     if _abs[0]==":":
@@ -100,7 +102,7 @@ def get_env_appmsw(request,name="",fieldname="",name_return="",jsonkey=""):
             elif name=="iris":
                 return _i
         except Exception as err:
-            print("---err-classMethod--------",err)
+            print("---err-classMethod--------",err) #,"fieldname",fieldname,"host",o.hostname)
             _i = f'{{"status":"Error get_env_appmsw {err} for :{name}"}}'
             return _i
     return ""

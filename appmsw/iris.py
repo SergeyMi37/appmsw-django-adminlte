@@ -4,6 +4,7 @@ from django.conf import settings
 from core.settings import DEBUG
 import json
 from urllib.parse import urlparse
+import jaydebeapi
 '''
 # http://grep.cs.msu.ru/python3.8_RU/digitology.tech/docs/python_3/library/urllib.parse.html
 
@@ -41,12 +42,30 @@ def classMethod(request,_class,_method, _arg="",iris_url=""):
         #print('iris-url=====',str(o.path.split("/")[1]))        
         if not o.hostname:
             return f'{{"status":"Error Iris Host is empty {iris_url}"}}'
+        elif o.scheme=='jdbc':
+            print("---------------!!!--",o.scheme)
+            #jdbc:IRIS://mswiris:S37^asu3@192.168.0.135:51774/USER
+            #con = jaydebeapi.connect('com.intersystems.jdbc.IRISDriver','jdbc:IRIS://iris:1972/USER',['superuser','SYS'],jars = ['appmsw/java/intersystems-jdbc-3.3.0.jar','appmsw/java/intersystems-jdbc-3.7.1.jar'])
+            con = jaydebeapi.connect('com.intersystems.jdbc.IRISDriver','jdbc:IRIS://'+o.hostname+':'+int(o.port)+'/'+str(o.path.split("/")[1]),[o.username,o.password],jars = ['appmsw/java/intersystems-jdbc-3.3.0.jar','appmsw/java/intersystems-jdbc-3.7.1.jar'])
+            curs = con.cursor()
+            #_class,_method 
+            curs.execute("select * FROM apptools_core.Log order by id desc")
+            print(dir(curs))
+            print(curs.rowcount,curs.arraysize)
+            #print(curs.fetchall())
+            column_names = [record[0] for record in curs.description]
+            print(column_names)
+            for row in curs.fetchall():
+                print(row)
+            con.close()
         else:
             connection = irisnative.createConnection( o.hostname, int(o.port), str(o.path.split("/")[1]), o.username, o.password)
             appiris = irisnative.createIris(connection)
+            #print(_class, _method, json.dumps(_args))
             _val = str(appiris.classMethodValue(_class, _method, json.dumps(_args)))
+            #connection.close()
     except Exception as err:
-        print("---err-classMethod--------",err)
+        print("---err-classMethod---",err,_class, _method, json.dumps(_args))
         _val = f'{{"status":"Error FAIL Iris connection {err} for {iris_url}"}}'
     #print('iris-val=====',_val, str(o.path.split("/")[1]))        
     return _val

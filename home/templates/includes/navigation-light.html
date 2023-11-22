@@ -1,5 +1,6 @@
   {% load static %}
-  {% load i18n %}
+  {% load i18n appmsw_tags %}
+  {% appmsw_tags_get_env 'iris' as app_iris %}
   <!-- Navbar L-->
   <nav class="main-header navbar navbar-expand navbar-dark navbar-light">
     <!-- Left navbar links -->
@@ -10,6 +11,11 @@
       <li class="nav-item d-none d-sm-inline-block">
         <a href="/" class="nav-link">{% trans 'Home' %}</a>
       </li>
+      {% if app_iris.host %}
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="/utility/?mode=Portal" class="nav-link">{% trans 'Portal' %} {{ app_iris.host }}</a>
+      </li>
+      {% endif %}
       {% if request.user.is_authenticated %}
         {% if request.user.is_superuser %}
           <li class="nav-item d-none d-sm-inline-block">

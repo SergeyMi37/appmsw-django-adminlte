@@ -18,12 +18,14 @@ description:
 Application tools for use Django AdminLTE
 </Notes>
 </Author>
+<Dependencies>
+ <ModuleReference>
+  <Name>apptools-admin</Name>
+  <Version>1.2.*</Version>
+ </ModuleReference>
+</Dependencies>
 <SourcesRoot>src</SourcesRoot>
-<Resource Name="%appmswserver.CLS"/>
-<!--<Resource Name="%appmswserver.INT"/>
-<Invokes>
- <Invoke Class="%ZAPM.ext.zapp" Method="init"></Invoke>
-</Invokes>-->
+<Resource Name="apptools.core.django.CLS"/>
 </Module>
 </Document>
 </Export>

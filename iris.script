@@ -7,9 +7,10 @@ if mode {
  zpm "load https://github.com/SergeyMi37/zapm.git"
  zapm "newdb https://github.com/SergeyMi37/DevBox.git"
  zapm "newdb https://github.com/intersystems-community/webterminal"
- zapm "newdb https://github.com/SergeyMi37/apptools-admin.git" 
+}
  
 zn "USER"
+zpm "load https://github.com/SergeyMi37/apptools-admin.git" 
 zpm "load /opt/irisapp/ -v":1
 
 zn "%SYS"

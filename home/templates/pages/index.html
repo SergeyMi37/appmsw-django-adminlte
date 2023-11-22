@@ -344,10 +344,8 @@
         <p>
           {% trans 'In the .env file add a variable' %}
         </p>
-        <p>
-          <b>APPMSW_IRIS_URL=iris://superuser:SYS@iris:1972/USER</b>
-        </p>
-        
+        {% appmsw_tags_get_env 'APPMSW_IRIS_URL'  as app_iris_url %}
+        <p>APPMSW_IRIS_URL = <b>{{ app_iris_url }}</b></p>
          {% if request.user.is_superuser %}
           <p>
             {% trans 'Load the function module in the template' %}
@@ -372,7 +370,6 @@
           <p>APPMSW_LOGO_TITLE = <b>{{ app_title }}</b></p>  
           <p>APPMSW_LOGO_FOOTER = <b>{{ app_footer }}</b></p>  
           <p>APPMSW_LOGO_IMG = <b>{{ app_icon }}</b></p>  
-            {% appmsw_tags_get_env 'APPMSW_IRIS_URL'  as app_iris_url %}
           <p>APPMSW_IRIS_URL = <b>{{ app_iris_url }}</b></p>  
             {% appmsw_tags_get_env 'APPMSW_Trans_RapidAPI_HostKey'   as app_var %}
           <p>APPMSW_Trans_RapidAPI_HostKey = <b>{{ app_var }}</b></p>  

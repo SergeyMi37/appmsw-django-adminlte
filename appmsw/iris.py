@@ -43,20 +43,17 @@ def classMethod(request,_class,_method, _arg="",iris_url=""):
         if not o.hostname:
             return f'{{"status":"Error Iris Host is empty {iris_url}"}}'
         elif o.scheme=='jdbc':
-            print("---------------!!!--",o.scheme)
-            #jdbc:IRIS://mswiris:S37^asu3@192.168.0.135:51774/USER
-            #con = jaydebeapi.connect('com.intersystems.jdbc.IRISDriver','jdbc:IRIS://iris:1972/USER',['superuser','SYS'],jars = ['appmsw/java/intersystems-jdbc-3.3.0.jar','appmsw/java/intersystems-jdbc-3.7.1.jar'])
-            con = jaydebeapi.connect('com.intersystems.jdbc.IRISDriver','jdbc:IRIS://'+o.hostname+':'+int(o.port)+'/'+str(o.path.split("/")[1]),[o.username,o.password],jars = ['appmsw/java/intersystems-jdbc-3.3.0.jar','appmsw/java/intersystems-jdbc-3.7.1.jar'])
+            print("--------JDBC--",json.dumps(_args))
+            _cs='jdbc:IRIS://'+o.hostname+':'+str(o.port)+'/'+str(o.path.split("/")[1])
+            con = jaydebeapi.connect('com.intersystems.jdbc.IRISDriver',
+                                     _cs,[o.username,o.password],
+                                     jars = ['appmsw/java/intersystems-jdbc-3.3.0.jar','appmsw/java/intersystems-jdbc-3.7.1.jar'])
             curs = con.cursor()
-            #_class,_method 
-            curs.execute("select * FROM apptools_core.Log order by id desc")
-            print(dir(curs))
-            print(curs.rowcount,curs.arraysize)
-            #print(curs.fetchall())
-            column_names = [record[0] for record in curs.description]
-            print(column_names)
-            for row in curs.fetchall():
-                print(row)
+            _sql="select top 1 apptools_core.django_GetResult('"+_class+"','"+_method+"','"+json.dumps(_args)+"') as result FROM apptools_core.Log"
+            curs.execute(_sql)
+            print(_sql)
+            #print(curs.fetchall()[0][0])
+            _val=str(curs.fetchall()[0][0])
             con.close()
         else:
             connection = irisnative.createConnection( o.hostname, int(o.port), str(o.path.split("/")[1]), o.username, o.password)
@@ -69,7 +66,7 @@ def classMethod(request,_class,_method, _arg="",iris_url=""):
         # chr(34) - "  chr(39) - ' chr(92) - \   ord('\') err-?
         _=str(err).replace(chr(34), chr(92) + chr(34)) # who will offer a better solution?) 
         _val = f'{{"status":"Error FAIL Iris connection {_} for {iris_url}"}}'
-    #print('iris-val=====',_val, str(o.path.split("/")[1]))        
+    print('iris-val=====',_val, str(o.path.split("/")[1]))        
     return _val
 
 def classMethodFooter(request,url=_url):

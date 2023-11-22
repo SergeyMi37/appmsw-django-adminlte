@@ -66,7 +66,9 @@ def classMethod(request,_class,_method, _arg="",iris_url=""):
             #connection.close()
     except Exception as err:
         print("---err-classMethod---",err,_class, _method, json.dumps(_args))
-        _val = f'{{"status":"Error FAIL Iris connection {err} for {iris_url}"}}'
+        # chr(34) - "  chr(39) - ' chr(92) - \   ord('\') err-?
+        _=str(err).replace(chr(34), chr(92) + chr(34)) # who will offer a better solution?) 
+        _val = f'{{"status":"Error FAIL Iris connection {_} for {iris_url}"}}'
     #print('iris-val=====',_val, str(o.path.split("/")[1]))        
     return _val
 

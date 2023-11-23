@@ -11,6 +11,10 @@ RUN pip install --upgrade pip
 RUN apt-get update && apt-get install -y wget && \
  apt-get install -y gettext
 
+##### Install Java
+RUN  apt-get install -y default-jdk
+
+
 RUN wget --continue https://github.com/intersystems-community/iris-driver-distribution/raw/main/DB-API/intersystems_irispython-3.2.0-py3-none-any.whl && \
     pip install intersystems_irispython-3.2.0-py3-none-any.whl && \
     rm intersystems_irispython-3.2.0-py3-none-any.whl

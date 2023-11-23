@@ -14,7 +14,7 @@ ClassMethod GetResp(arg = "") As %String
 	set js.status="ok"
 	set js.instance = $ZU(86)
 	set js.version=$zv
-	set:arg'="" js.django={}.%FromJSON(arg)   //"AnonymousUser"
+	set:$c(0)'[arg js.django={}.%FromJSON(arg)   //"AnonymousUser"
 	quit js
 }
 
@@ -395,6 +395,22 @@ ClassMethod GetPortalNS(count, gn, SectionHeader = "Namespaces", %Param = "", gn
 	set run="set st=##class(apptools.core.LogInfoPane).DrawSQL(""r "_gnTab_""",10000,$zu(5),%Param,%exec,,"""")"
 	do ##class(apptools.core.sys).Run2Spool(run,gn)
 	quit 0
+}
+
+/// write ##class(apptools.core.django).GetResult("apptools.core.django","GetFooter","")
+/// write ##class(apptools.core.django).GetResult("apptools.core.django","GetPortal","") 
+/// select top 1 apptools_core.django_GetResult('apptools.core.django','GetFooter') as result FROM apptools_core.Log
+ClassMethod GetResult(class, method, arg = "") As %String [ SqlProc ]
+{
+	if '$d(^apptools.core.LogD) do ##class(apptools.core.Log).AddRecord("I want", "log", "everything", "INFO", "actions", "users")
+	set res=""
+	try {
+		set res=$CLASSMETHOD(class, method, arg)
+	}
+	catch e {
+		set res="Error "_$ze
+	}
+    quit res
 }
 
 }

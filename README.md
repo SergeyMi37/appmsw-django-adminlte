@@ -18,7 +18,7 @@ Application tools for use Django AdminLte.
 
 ## What's new
 
-...
+Implemented support for connecting to IRIS via the JDBC library.
 
 ![](https://raw.githubusercontent.com/SergeyMi37/appmsw-django-adminlte/master/doc/icons/logo-apptools.png)
 

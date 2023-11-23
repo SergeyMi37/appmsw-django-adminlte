@@ -28,7 +28,7 @@
 {% appmsw_tags_get_env 'title'  as app_title %}
 {% appmsw_tags_get_env 'img'    as app_icon %}
 {% appmsw_tags_get_env 'footer' as app_footer %}
-{% appmsw_tags_get_env 'iris'   as app_iris %}
+{% appmsw_tags_get_env 'iris_portal'   as app_iris_portal %}
 {% appmsw_tags_get_env 'APPMSW_PARAM_NANE'   as app_param_name %}
 {% get_side_menu as custom_side_menu_list %}
 {% admin_get_menu as app_list %} 
@@ -40,12 +40,16 @@
         <div class="row mb-2">
           <div class="col-sm-6">
             <h1 class="m-0">{{ mode }} </h1>
+            {% if mode == 'Portal' %}
+              {{app_iris_portal.instancename}} --- {{app_iris_portal.version}} 
+              <!--<br>{{app_iris_portal}}-->
+            {% endif %}
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
-
+    {% for item in app_iris_portal.portal %}
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
@@ -55,14 +59,14 @@
             <!-- small box -->
             <div class="small-box bg-info">
               <div class="inner">
-                <h3>{{ mode }}</h3>
+                <h3>{{ item.name }}</h3>
 
-                <p>{% trans 'Custom title' %}</p>
+                <p>Count:<b> {{ item.count }}</b></p>
               </div>
               <div class="icon">
                 <i class="fas fa-hand-point-left"></i>
               </div>
-              <a href="#" data-toggle="modal" data-target="#modal-info" class="appmsw-more-info small-box-footer">{% trans 'More info' %} <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="#{{ item.name }}" data-toggle="modal" data-target="#modal-info" class="appmsw-more-info small-box-footer">{% trans 'More info' %} <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- right col -->
@@ -71,7 +75,9 @@
       </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->
+    {% endfor %}
   </div>
+    
 
   <div class="modal fade" id="modal-info" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="modal-info" aria-hidden="true">
     <div class="modal-dialog modal-xl modal-dialog-scrollable">
@@ -84,7 +90,7 @@
         </div>
         <div class="modal-body">
        
-            {{ mode }}
+          {{ item.name }}
             <p>
             user: {{request.user}} 
             <p>

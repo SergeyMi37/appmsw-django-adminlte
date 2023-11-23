@@ -95,6 +95,8 @@ def get_env_appmsw(request,name="",fieldname="",name_return="",jsonkey=""):
                         _abs = _absuri + enum["url"]
                     _irf+=f' | <a target="_blank" href="{ _abs }">{ enum["name"] }</a> '
                 return _irf
+            elif name=="iris_portal":
+                return json.loads(classMethodPortal(request,url=_e["APPMSW_IRIS_URL"]))
             elif name=="iris_instance":
                 return _i['instance'].split("*")[1]
             elif name=="iris_host":

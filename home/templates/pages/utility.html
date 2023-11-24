@@ -61,15 +61,19 @@
           <div class="col-lg-3 col-6">
             <!-- small box -->
             <div class="small-box bg-info">
-              <div class="inner">
+              <div class="inner" id='appmsw-{{ item.name }}'>
                 <h3>{{ item.name }}</h3>
-               --- {{item.sort}} ---
                 <p>Count:<b> {{ item.count }}</b></p>
               </div>
               <div class="icon">
                 <i class="fas fa-hand-point-left"></i>
-              </div>
-              <a href="#{{ item.name }}" data-toggle="modal" data-target="#modal-info" class="appmsw-more-info small-box-footer">{% trans 'More info' %} <i class="fas fa-arrow-circle-right"></i></a>
+              </div> 
+              <a  {% autoescape off %}  href="#" 
+              onclick="
+              $('#appModalTitle').text('{{ item.name }}'); 
+              $('#appModalContent').text('{{ item.name }}'); 
+              "
+               {% endautoescape %}  data-toggle="modal" data-target="#modal-info" class="appmsw-more-info small-box-footer" >{% trans 'More info' %} <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- right col -->
@@ -79,7 +83,7 @@
         <div class="col-lg-3 col-6">
           <!-- small box -->
           <div class="small-box bg-info">
-            <div class="inner">
+            <div class="inner" id='appmsw-{{ mode }}'>
               <h3>{{ mode }}</h3>
              
               <p>Count:<b> {{ mode }}</b></p>
@@ -103,21 +107,13 @@
     <div class="modal-dialog modal-xl modal-dialog-scrollable">
       <div class="modal-content bg-info">
         <div class="modal-header">
-          <h4 class="modal-title">{% trans 'Project variables' %}</h4>
+          <h4 id="appModalTitle" class="modal-title">UnDef</h4>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <div class="modal-body">
+        <div  id="appModalContent"  class="modal-body">
        
-          {{ item.name }}
-            <p>
-            user: {{request.user}} 
-            <p>
-            username: {{request.user.username}}
-            <p>
-            goups username: {{request.user.groups}}
-    
         </div>
         <div class="modal-footer justify-content-between">
           <button type="button" class="btn btn-outline-light" data-dismiss="modal">Close</button>

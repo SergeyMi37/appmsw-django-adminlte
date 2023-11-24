@@ -176,6 +176,11 @@ Ctrl x h - add directory
 Ctrl \ - change directory
 Alt i - syncronizire directory
 
+## jquery ------------------------------
+<a  {% autoescape off %}  href="#" onclick="$('#appModalTitle').attr('value','{{ item.name }}');" {% endautoescape %}  data-toggle="modal" data-target="#modal-info" class="appmsw-more-info small-box-footer" >{% trans 'More info' %} <i class="fas fa-arrow-circle-right"></i></a>
+
+
+
 ## wsl ----------------------------------------------------------
 https://docs.microsoft.com/ru-ru/windows/wsl/basic-commands
 https://ab57.ru/cmdlist/wslcmd.html

@@ -49,18 +49,21 @@
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
-    {% for item in app_iris_portal.portal %}
+    
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
         <!-- Small boxes (Stat box) -->
-        <div class="row">
+      {% if mode == 'Portal' %}
+      <div>
+        {% for item in app_iris_portal.portal %}
+        {% if item.sort == 1 %}</div><div class="row">{% endif%}
           <div class="col-lg-3 col-6">
             <!-- small box -->
             <div class="small-box bg-info">
               <div class="inner">
                 <h3>{{ item.name }}</h3>
-
+               --- {{item.sort}} ---
                 <p>Count:<b> {{ item.count }}</b></p>
               </div>
               <div class="icon">
@@ -70,12 +73,29 @@
             </div>
           </div>
           <!-- right col -->
+        {% endfor %}
         </div>
+      {% else %}
+        <div class="col-lg-3 col-6">
+          <!-- small box -->
+          <div class="small-box bg-info">
+            <div class="inner">
+              <h3>{{ mode }}</h3>
+             
+              <p>Count:<b> {{ mode }}</b></p>
+            </div>
+            <div class="icon">
+              <i class="fas fa-hand-point-left"></i>
+            </div>
+            <a href="#" data-toggle="modal" data-target="#modal-info" class="appmsw-more-info small-box-footer">{% trans 'More info' %} <i class="fas fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+      {% endif %}  
         <!-- /.row (main row) -->
       </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->
-    {% endfor %}
+ 
   </div>
     
 

@@ -3,7 +3,7 @@
   <Document name="appmsw-django-adminlte.ZPM">
     <Module>
       <Name>appmsw-django-adminlte</Name>
-      <Version>1.3.0</Version>
+      <Version>1.3.1</Version>
       <Description>Application tools for use Django AdminLte</Description>
       <Packaging>module</Packaging>
   <Keywords>Application tools AdminLTE </Keywords>
@@ -26,6 +26,7 @@ Application tools for use Django AdminLTE
 </Dependencies>
 <SourcesRoot>src</SourcesRoot>
 <Resource Name="apptools.core.django.CLS"/>
+<Resource Name="apptools.util.json.CLS"/>
 </Module>
 </Document>
 </Export>

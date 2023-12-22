@@ -7,7 +7,7 @@ from urllib.parse import urlparse
 import jaydebeapi
 
 _url = os.getenv("APPMSW_IRIS_URL")
-
+print("========================",_url)
 #from telegram import Bot
 #from core.settings import TELEGRAM_TOKEN
 #bot_info = Bot(TELEGRAM_TOKEN).get_me()

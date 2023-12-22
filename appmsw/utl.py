@@ -40,7 +40,7 @@ def get_param(par_name="",par_name_return="Desc",json_key=""):
     #print(param)
     return _e
 
-@lru_cache()
+#@lru_cache()
 def get_env_appmsw(request,name="",fieldname="",name_return="",jsonkey=""):
     if name.find("APPMSW_")>-1:
         return str(os.environ.get(name))

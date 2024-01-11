@@ -6,6 +6,9 @@ django-admin-adminlte==1.0.5
 
 jaydebeapi
 
+#image 
+Pillow
+
 # psycopg2-binary
 # mysqlclient
 

@@ -35,6 +35,8 @@ class Comment(models.Model):
    creation_date = models.DateTimeField(auto_now=True)
    author = models.ForeignKey(to=User, on_delete=models.CASCADE)
    param = models.ForeignKey(to=Param, on_delete=models.CASCADE, related_name='comments')
+   img = models.ImageField(upload_to="images", null=True, blank=True, verbose_name='Image')
+   file = models.FileField(upload_to="files", null=True, blank=True, verbose_name='File')
 
    def __str__(self):
         return f"{self.text}, {self.author}"

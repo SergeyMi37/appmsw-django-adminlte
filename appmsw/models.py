@@ -42,3 +42,18 @@ class Comment(models.Model):
         return f"{self.text}, {self.author}"
 
 
+class SysOption(models.Model):
+    name = models.CharField(max_length=100)
+    category = models.CharField(max_length=30, choices=categorys, default='app')
+    desc = models.CharField(max_length=1000, default = '')
+    option = models.CharField(max_length=1000, default='')
+    json = models.TextField(max_length=75000, default='')
+    creation_date = models.DateTimeField(auto_now=True)
+    public=models.BooleanField(default=True)
+    enabled=models.BooleanField(default=True)
+
+    def __str__(self):
+        return f"{self.name},{self.category},{self.desc}, {self.json}"
+
+    def __repr__(self):
+        return f"{self.name}, {self.category},{self.desc}"

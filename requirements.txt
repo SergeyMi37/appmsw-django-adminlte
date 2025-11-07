@@ -1,10 +1,36 @@
-django
+# asgiref==3.10.0
+# attrs==25.4.0
+# Django==5.0
+# django-admin-adminlte==1.0.5
+# djangorestframework==3.16.1
+# drf-spectacular==0.29.0
+# gunicorn==23.0.0
+# inflection==0.5.1
+# intersystems-irispython @ file:///E:/repo/appmsw-django-adminlte/appmsw/api/intersystems_irispython-3.2.0-py3-none-any.whl
+# JayDeBeApi==1.2.3
+# JPype1==1.5.0
+# jsonschema==4.25.1
+# jsonschema-specifications==2025.9.1
+# packaging==25.0
+# pillow==12.0.0
+# python-dotenv==1.2.1
+# PyYAML==6.0.3
+# referencing==0.37.0
+# rpds-py==0.28.0
+# sqlparse==0.5.3
+# typing_extensions==4.15.0
+# tzdata==2025.2
+# uritemplate==4.2.0
+# whitenoise==6.11.0
+
+
+django==5
 gunicorn
 python-dotenv
 whitenoise
 django-admin-adminlte==1.0.5
 
-jaydebeapi
+jaydebeapi==1.2.3
 
 #image 
 Pillow
@@ -13,4 +39,7 @@ Pillow
 # mysqlclient
 
 # iris
-# appmsw/api/intersystems_irispython-3.2.0-py3-none-any.whl
+appmsw/api/intersystems_irispython-3.2.0-py3-none-any.whl
+
+# Swagger 3
+drf-spectacular

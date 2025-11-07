@@ -56,9 +56,14 @@ APPMSW_IRIS_URL=jdbc://superuser:SYS@iris:1972/USER
 
 
 ```
-python -m venv env
-source env/bin/activate
-source env/Scripts/activate # for Windows
+# virtualenv env
+  # Linux/Mac
+python3 -m venv env-lin
+source env-lin/bin/activate
+  # Windows
+python -m venv env-win
+source env-win/Scripts/activate
+
 pip install -r requirements.txt
 
 pip install appmsw/api/intersystems_irispython-3.2.0-py3-none-any.whl
@@ -69,4 +74,6 @@ python manage.py createsuperuser # adm, developer
 python manage.py loaddata db-init-param.json
 python manage.py runserver
 
-At this point, the app runs at `http://127.0.0.1:8000/`. 
+At this point, the app runs at 
+`http://127.0.0.1:8000/` - Интерфейс
+`http://127.0.0.1:8000/api/docs/` - Swagger

@@ -42,7 +42,7 @@ $ docker-compose up -d
 
 Visit `http://localhost:5085` in your browser. The app should be up & running.
 
-После это паоль нужно сменить
+После этого пароль нужно сменить
 
 <br />
 
@@ -78,9 +78,6 @@ APPMSW_LOGO_FOOTER=MsW-Footer
 # Connection string for iris via JDBC libs
 APPMSW_IRIS_URL=jdbc://superuser:SYS@iris:1972/USER
 ```
-
-
-```
 # virtualenv env
   # Linux/Mac
 python3 -m venv env-lin
@@ -99,6 +96,8 @@ python manage.py createsuperuser # adm, developer
 python manage.py loaddata db-init-param.json
 python manage.py runserver
 
+```
+
 At this point, the app runs at 
-`http://127.0.0.1:8000/` - Интерфейс
-`http://127.0.0.1:8000/api/docs/` - Swagger
+`http://127.0.0.1:8000/` - Интерфейс Django с кампонентами AdminLte
+`http://127.0.0.1:8000/api/docs/` - Swagger v.3 к моделям Django

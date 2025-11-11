@@ -39,7 +39,7 @@ psycopg2-binary
 # mysqlclient
 
 # iris
-# appmsw/api/intersystems_irispython-3.2.0-py3-none-any.whl
+appmsw/api/intersystems_irispython-3.2.0-py3-none-any.whl
 
 # Swagger 3
 drf-spectacular

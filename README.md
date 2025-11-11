@@ -14,13 +14,38 @@ Application tools for use Django AdminLte.
 
 <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/SergeyMi37/appmsw-django-adminlte">
 
-[![license](https://img.shields.io/badge/License-Apache%202.0-yellow.svg)](https://raw.githubusercontent.com/sergeymi37/appmsw-django-adminlte/master/LICENSE)
-
 ## What's new
 
 Implemented support for connecting to IRIS via the JDBC library.
 
 ![](https://raw.githubusercontent.com/SergeyMi37/appmsw-django-adminlte/master/doc/icons/logo-apptools.png)
+
+## Start the app in Docker
+
+> 👉 **Step 1** - Download the code from the GH repository (using `GIT`)
+
+```bash
+$ git clone https://github.com/SergeyMi37/appmsw-django-adminlte.git
+$ cd appmsw-django-adminlte
+```
+
+> 👉 **Step 2** - Start the APP in `Docker`
+
+Копировать файл в .env из env.sample и изменить переменные при необходимости
+Пропишите ваш реальный IP адрес в переменную CSRF_TRUSTED_ORIGINS
+
+```bash
+$ docker-compose up -d
+```
+
+В докере создадутся супер-пользователи adm и developer с паролем demo
+
+Visit `http://localhost:5085` in your browser. The app should be up & running.
+
+После это паоль нужно сменить
+
+<br />
+
 
 ## Manual Build 
 
@@ -64,7 +89,7 @@ source env-lin/bin/activate
 python -m venv env-win
 source env-win/Scripts/activate
 
-pip install -r requirements.txt
+pip install -r requirements-win.txt
 
 pip install appmsw/api/intersystems_irispython-3.2.0-py3-none-any.whl
 python -m pip install --upgrade pip

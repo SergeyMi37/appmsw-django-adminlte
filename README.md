@@ -85,7 +85,7 @@ source env-lin/bin/activate
   # Windows
 python -m venv env-win
 source env-win/Scripts/activate
-
+```
 pip install -r requirements-win.txt
 
 pip install appmsw/api/intersystems_irispython-3.2.0-py3-none-any.whl
@@ -101,3 +101,28 @@ python manage.py runserver
 At this point, the app runs at 
 `http://127.0.0.1:8000/` - Интерфейс Django с кампонентами AdminLte
 `http://127.0.0.1:8000/api/docs/` - Swagger v.3 к моделям Django
+
+## Утилиты командной строки
+
+```
+#  Статистика всех моделей Django:
+python manage.py model_stats
+
+#  Детальная информация о конкретной модели:
+python manage.py check_model appmsw.param
+
+#  Экспорт модели в файл json:
+python manage.py model_import --model Param --file test.json --format json --import 0
+# или
+python manage.py model_import --model Param --file test.json --format json
+
+#  Экспорт модели в файл csv (по умолчанию):
+python manage.py model_import --model sysoption --file sysotiom.csv --format csv
+
+#  Импорт модели из файла json в режиме --dry-run - сухой запуск, без реального импорта:
+python manage.py model_import --model SysOption --file sysotion.json --format json --import 1 --dry-run
+
+#  Импорт модели из файла json:
+python manage.py model_import --model SysOption --file sysotion.json --format json --import 1
+
+```

@@ -24,11 +24,12 @@
 # whitenoise==6.11.0
 
 
-django==4.2.26 # 5 ???
+django==4.2.26 # 5 конфликт на Oracle Redhat 7.7.
 gunicorn
 python-dotenv
 whitenoise
 django-admin-adminlte==1.0.5
+django-import-export
 
 jaydebeapi==1.2.3
 

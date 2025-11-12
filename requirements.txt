@@ -29,6 +29,7 @@ gunicorn
 python-dotenv
 whitenoise
 django-admin-adminlte==1.0.5
+django-import-export
 
 jaydebeapi==1.2.3
 

@@ -44,8 +44,9 @@ class Command(BaseCommand):
 
         # Получаем модель из настроек проекта
         try:
-            ModelClass = getattr(sys.modules[f'{settings.PROJECT_NAME}.{settings.MODELS_MODULE}'], model_name)
-        except AttributeError:
+            models_module = import_module('appmsw.models')
+            ModelClass = getattr(models_module, model_name)
+        except (ModuleNotFoundError, AttributeError):
             raise ImproperlyConfigured(f'Модель {model_name} не найдена!')
 
         resource_class = modelresource_factory(ModelClass)()
@@ -61,24 +62,26 @@ class Command(BaseCommand):
             raise ValueError(f'Неподдерживаемый формат файла: {format_type}')
 
         if is_import:
-            dataset = selected_format.create_dataset(open(file_path, 'rb').read())
+            with open(file_path, 'rb') as f:
+                dataset = selected_format.create_dataset(f.read())
             result = resource_class.import_data(dataset, dry_run=dry_run)
 
             if dry_run:
-                self.stdout.write(self.style.WARNING(f'Импорт прошел бы успешно, было бы обновлено/добавлено: {result.totals["new"] + result.totals["updated"]}, ошибок: {result.totals["errors"]}.'))
+                self.stdout.write(self.style.WARNING(f'Импорт прошел бы успешно, было бы обновлено/добавлено: {result.totals["new"] + result.totals["update"]}, ошибок: {result.totals["error"]}.'))
             elif result.has_errors():
                 self.stdout.write(self.style.ERROR('При импорте возникли ошибки:'))
                 for row_num, error_list in result.row_errors():
                     self.stdout.write(f'Строка {row_num}: {" ".join([f"{col}({type(e).__name__})" for col, e in error_list])}')
             else:
-                self.stdout.write(self.style.SUCCESS(f'Импорт завершен успешно. Обновлено/добавлено записей: {result.totals["new"] + result.totals["updated"]}. Ошибок: {result.totals["errors"]}.'))
+                # print(result.totals)
+                self.stdout.write(self.style.SUCCESS(f'Импорт завершен успешно. Добавлено: {result.totals["new"]}, обновлено: {result.totals["update"]}, ошибок: {result.totals["error"]}.'))
 
         else:
             queryset = ModelClass.objects.all()
             dataset = resource_class.export(queryset)
             serialized_data = selected_format.export_data(dataset)
 
-            with open(file_path, 'wb') as f:
-                f.write(serialized_data.read())
+            with open(file_path, 'w', encoding='utf-8') as f:
+                f.write(serialized_data)
 
             self.stdout.write(self.style.SUCCESS(f'Экспорт завершен успешно. Количество записей: {queryset.count()}'))

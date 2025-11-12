@@ -71,11 +71,13 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     'rest_framework',
     'drf_spectacular',
-
+    'import_export',
     "home",
     # app msw params
     'appmsw',
 ]
+
+IMPORT_EXPORT_USE_TRANSACTIONS = True
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",

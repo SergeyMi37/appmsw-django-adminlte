@@ -1,0 +1,44 @@
+version: '3.8'
+services:
+  db:
+    image: postgres:12
+    container_name: dj_postgres
+    restart: always
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    env_file:
+      - ./.env
+    ports:
+      - "5434:5432"
+  redis:
+    image: redis:alpine
+    container_name: dj_redis
+  appmsw:
+    container_name: dj-appmsw
+    restart: always
+    build: .
+    #command: bash -c "python manage.py makemigrations && python manage.py migrate && python manage.py import_options --file doc/options.json && python manage.py import_group_roles --file doc/group_roles.json && python manage.py runserver --noreload 0.0.0.0:8000"
+    networks:
+      - db_network
+      - web_network
+      # - iris_network
+  nginxs:
+    container_name: dj_nginxs
+    restart: always
+    image: "nginx:latest"
+    ports:
+      - "5085:5085"
+    volumes:
+      - ./nginx:/etc/nginx/conf.d
+    networks:
+      - web_network
+    depends_on: 
+      - appmsw
+networks:
+  db_network:
+    driver: bridge
+  web_network:
+    driver: bridge 

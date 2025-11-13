@@ -24,7 +24,7 @@ services:
     networks:
       - db_network
       - web_network
-      # - iris_network
+      - iris_network
   nginxs:
     container_name: nginxs
     restart: always
@@ -42,6 +42,6 @@ networks:
     driver: bridge
   web_network:
     driver: bridge
-  # iris_network:
-  #   driver: bridge
+  iris_network:
+    driver: bridge
  

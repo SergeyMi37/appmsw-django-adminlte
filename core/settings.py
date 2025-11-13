@@ -51,10 +51,9 @@ if RENDER_EXTERNAL_HOSTNAME:
 REST_FRAMEWORK = {
     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
 }
-
 SPECTACULAR_SETTINGS = {
-    'TITLE': 'Parameters API',
-    'DESCRIPTION': 'API для управления параметрами и комментариями',
+    'TITLE': os.environ.get('SWAGGER_TITLE','Parameters API'),
+    'DESCRIPTION': os.environ.get('SWAGGER_DESCRIPTION','API управления параметрами и комментариями'),
     'VERSION': '1.0.0',
     'SERVE_INCLUDE_SCHEMA': False,
 }

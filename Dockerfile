@@ -25,8 +25,8 @@ COPY . .
 
 # running migrations
 RUN python manage.py migrate
-RUN python manage.py createsuperuser --noinput --username adm --email adm@mswhost.com
-RUN python manage.py createsuperuser --noinput --username developer --email dev@mswhost.com
-RUN python manage.py loaddata db-init-param.json
+# RUN python manage.py createsuperuser --noinput --username adm --email adm@mswhost.com
+# RUN python manage.py createsuperuser --noinput --username developer --email dev@mswhost.com
+# RUN python manage.py loaddata db-init-param.json
 # gunicorn
 CMD ["gunicorn", "--config", "gunicorn-cfg.py", "core.wsgi"]

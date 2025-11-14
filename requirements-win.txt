@@ -36,6 +36,7 @@ jaydebeapi==1.2.3
 #image 
 Pillow
 
+# pip install psycopg2
 psycopg2-binary
 # mysqlclient
 

@@ -38,8 +38,8 @@ CSRF_TRUSTED_ORIGINS = ['http://localhost:8000', 'http://localhost:5085', 'https
 _ = os.environ.get('CSRF_TRUSTED_ORIGINS')
 if _:
     CSRF_TRUSTED_ORIGINS.append(_)
-print("CSRF_TRUSTED_ORIGINS === ",_,' + ',CSRF_TRUSTED_ORIGINS)
-
+print("=== CSRF_TRUSTED_ORIGINS === ",_,' + ',CSRF_TRUSTED_ORIGINS)
+print("=== Переменные окружения === ",os.environ)
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_CREDENTIALS = True
 
@@ -59,7 +59,6 @@ SPECTACULAR_SETTINGS = {
 }
 
 # Application definition
-
 INSTALLED_APPS = [
     'admin_adminlte.apps.AdminAdminlteConfig',
     "django.contrib.admin",
